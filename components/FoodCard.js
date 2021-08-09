@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import {Divider, Icon} from 'react-native-elements';
 import {ScrollView} from 'react-native-gesture-handler';
 import tw from 'tailwind-react-native-classnames';
@@ -226,16 +226,24 @@ const FoodCard = ({id}) => {
   return (
     <ScrollView
       horizontal
-      snapToInterval={372}
+      snapToInterval={Dimensions.get('screen').width - 40}
       snapToAlignment="center"
       decelerationRate={0}
-      style={{flexDirection: 'row', marginBottom: 20, paddingRight: 90}}>
+      style={{flexDirection: 'row', marginBottom: 20}}>
       {data.map((item, x) => (
         <View
-          style={[tw`px-4`, {marginRight: x + 1 !== data.length ? 38 : 90}]}
+          style={[
+            tw`px-4`,
+            {
+              width:
+                x + 1 === data.length
+                  ? Dimensions.get('screen').width
+                  : Dimensions.get('screen').width - 40,
+            },
+          ]}
           key={x}>
           {item.map((prod, i) => (
-            <View key={i} style={tw`flex-row mb-20`}>
+            <View key={i} style={tw`flex-row mb-20 w-full`}>
               <SingleFood prod={prod} id={id} />
             </View>
           ))}
