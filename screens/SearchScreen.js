@@ -14,7 +14,7 @@ const orangeRegular = '#ed5e0e';
 const orangeLight = '#fc8019';
 const dividerColor = '#e9e9eb';
 
-const searchData = ['Monginis', 'Cream chills', "Mc donald's", 'dominos'];
+const searchData = ['Monginis', 'Cream chills', "Mc donald's"];
 
 const popularCuisineData = [
   {
@@ -134,6 +134,7 @@ const SearchScreen = () => {
           Popular cuisines
         </Text>
       </View>
+
       <ScrollView contentContainerStyle={[tw`flex-row px-2 mt-3`]} horizontal>
         {popularCuisineData.map((item, i) => (
           <View style={[tw`mx-3 `]} key={i}>
@@ -163,16 +164,13 @@ const SearchScreen = () => {
       </ScrollView>
       <Divider
         style={[
-          tw`mb-60`,
           {
             borderWidth: 8,
             borderColor: dividerColor,
-            backgroundColor: 'white',
+            bottom: 170,
           },
         ]}
-        color="white"
       />
-
       <BottomNavigation active={'SearchScreen'} />
     </View>
   );
